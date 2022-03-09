@@ -1,0 +1,6 @@
+.env
+/www/html/**
+!/www/html/.htaccess
+scrapping/
+scrapping/Pipfile
+scrapping/Pipfile.lock

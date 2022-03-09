@@ -1,0 +1,12 @@
+.product-card-cursor {
+    cursor: pointer;
+}
+
+del span.woocommerce-Price-amount {
+    font-size: 0.8em;
+}
+
+ins span.woocommerce-Price-amount {
+    font-size: 1.2em;
+    margin-left: 4px;
+}

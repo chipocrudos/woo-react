@@ -1,0 +1,26 @@
+{
+  "name": "uiwow",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
+    "axios": "^0.26.0",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
+    "next": "12.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.2"
+  },
+  "devDependencies": {
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.1.0"
+  }
+}
