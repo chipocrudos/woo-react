@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useClient } from "../../hooks";
 import FormSearch from "../FormSearch/FormSearch";
+import style from "./TopMenu.module.css";
 
 export function TopMenu(props) {
   const { siteLogoUrl, headerMenuItems, siteTitle, siteDescription } = props;
@@ -17,9 +18,9 @@ export function TopMenu(props) {
             width={25}
             height={25}
             floating="left"
-            style={{ marginTop: "25px" }}
+            className={style.topMenuImage}
           />
-          <Header size="small" style={{ marginLeft: "10px" }}>
+          <Header size="small" className={style.topMenuBrand}>
             <Header.Content>
               {siteTitle}
               <Header.Subheader>{siteDescription}</Header.Subheader>
@@ -41,7 +42,10 @@ export function TopMenu(props) {
         </Menu.Item>
         <Link href="/cart">
           <Menu.Item>
-            <Icon name="cart" color={cart?.totalQty && "blue"} />
+            <Icon
+              name={cart?.totalQty ? "cart" : "opencart"}
+              color={cart?.totalQty && "blue"}
+            />
             {cart?.totalQty && (
               <Label
                 className="top-menu-cart-label"

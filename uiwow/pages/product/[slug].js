@@ -1,9 +1,9 @@
 import { Loader } from "semantic-ui-react";
-import { getProductApi } from "../../../api/products";
-import { getHeaderFooter } from "../../../api/site";
-import { CenterMessage } from "../../../components";
-import { Footer, Header, UserLayout } from "../../../layouts";
-import { ProductDetail } from "../../../components";
+import { getProductApi } from "../../api/products";
+import { getHeaderFooter } from "../../api/site";
+import { CenterMessage } from "../../components";
+import { Footer, Header, UserLayout } from "../../layouts";
+import { ProductDetail } from "../../components";
 
 export default function ProductSlug(props) {
   const { headerFooter, product } = props;

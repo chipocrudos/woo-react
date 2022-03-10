@@ -4,10 +4,12 @@ import { getHeaderFooter } from "../api/site";
 import { CenterMessage, CartProducts } from "../components";
 
 import { useClient } from "../hooks";
+import { useState } from "react";
 
 export default function Home(props) {
   const { headerFooter } = props;
-  const { cart } = useClient();
+  const { cart, setCart } = useClient();
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
@@ -37,14 +39,23 @@ export default function Home(props) {
 
               <Grid.Row>
                 <Grid.Column>
-                  <CartProducts cart={cart} />
+                  <CartProducts
+                    cart={cart}
+                    setCart={setCart}
+                    setLoading={setLoading}
+                  />
                 </Grid.Column>
               </Grid.Row>
 
               <Grid.Row>
                 <Grid.Column>
                   <Header as="h2" floated="right">
-                    <Button color="blue" animated>
+                    <Button
+                      color="blue"
+                      basic={loading}
+                      animated
+                      loading={loading}
+                    >
                       <Button.Content hidden>
                         <Icon name="payment" />
                         Proceder al pago

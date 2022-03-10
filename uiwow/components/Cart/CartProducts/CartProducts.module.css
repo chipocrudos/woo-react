@@ -1,0 +1,14 @@
+.cartProductGroup {
+    margin: unset !important;
+}
+
+.inputQuantity {
+    margin: 0 auto !important;
+    width: 140px;
+    }
+
+.inputLabel {
+    margin-top: 3px !important;
+    width: 100%;
+    color: red;
+}

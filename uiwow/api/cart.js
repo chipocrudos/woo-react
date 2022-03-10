@@ -43,7 +43,7 @@ export const updateCartApi = async (key, qty, setLoading, setCart) => {
   setLoading(true);
 
   await axios.patch(
-    `${CART_API_URL}/${key}`,
+    `${CART_API_URL}${key}`,
     {
       quantity: qty,
     },
@@ -57,7 +57,7 @@ export const updateCartApi = async (key, qty, setLoading, setCart) => {
 export const deleteCartApi = async (key, setLoading, setCart) => {
   setLoading(true);
 
-  await axios.delete(`${CART_API_URL}/${key}`, getAddOrViewCartConfig());
+  await axios.delete(`${CART_API_URL}${key}`, getAddOrViewCartConfig());
 
   viewCartApi(setCart);
   setLoading(false);

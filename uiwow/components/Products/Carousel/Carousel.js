@@ -11,8 +11,8 @@ export function Carousel(props) {
   const [hideArrows, setHideArrows] = useState(false);
 
   useEffect(() => {
-    if (images.length) setSrcImage(images[0].src);
-    if (images.length < 6) setHideArrows(true);
+    if (images?.length) setSrcImage(images[0].src);
+    if (images?.length < 6) setHideArrows(true);
   }, []);
 
   const onImageClick = (id) => {
@@ -42,7 +42,7 @@ export function Carousel(props) {
       </div>
 
       <div className="carousel-thumb">
-        {images.length ? (
+        {!!images?.length ? (
           <>
             <button
               className={classNames(
