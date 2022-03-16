@@ -4,3 +4,4 @@ export * from "./Image";
 export * from "./Paginate";
 export * from "./CenterMessage";
 export * from "./Cart";
+export * from "./Auth";

@@ -4,7 +4,10 @@ services:
 
   wordpress:
     image: wordpress
-    restart: always
+    # restart: always
+    # build: 
+    #   context: .
+    #   dockerfile: ./docker/wordpress/Dockerfile
     ports:
       - 8080:80
     environment:
@@ -13,14 +16,15 @@ services:
       WORDPRESS_DB_PASSWORD: $DB_PASSWORD
       WORDPRESS_DB_NAME: $DB_NAME
       WPJM_REST_API_ENABLED: 1
+      JWT_AUTH_SECRET_KEY: $JWT_AUTH_SECRET_KEY
     volumes:
       # - wordpress:/var/www/html
       - ./www/html:/var/www/html
-      - ./www/data/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      # - ./www/data/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   db:
     image: mysql:5.7
-    restart: always
+    # restart: always
     environment:
       MYSQL_DATABASE: $DB_NAME
       MYSQL_USER: $DB_USER

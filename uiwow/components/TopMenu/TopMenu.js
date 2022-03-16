@@ -1,13 +1,14 @@
 import { Menu, Header, Icon, Label } from "semantic-ui-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useClient } from "../../hooks";
+import { useClient, useAuth } from "../../hooks";
 import FormSearch from "../FormSearch/FormSearch";
 import style from "./TopMenu.module.css";
 
 export function TopMenu(props) {
   const { siteLogoUrl, headerMenuItems, siteTitle, siteDescription } = props;
   const { cart } = useClient();
+  const { auth, logout } = useAuth();
 
   return (
     <Menu stackable style={{ minWidth: "100%", width: "100%" }}>
@@ -60,12 +61,20 @@ export function TopMenu(props) {
             )}
           </Menu.Item>
         </Link>
-        <Link href="#">
-          <Menu.Item>
-            <Icon name="sign in" />
-            Ingresar
+
+        {auth?.me ? (
+          <Menu.Item onClick={() => logout()}>
+            <Icon name="sign out" />
+            Salir
           </Menu.Item>
-        </Link>
+        ) : (
+          <Link href="/login">
+            <Menu.Item>
+              <Icon name="sign in" />
+              Ingresar
+            </Menu.Item>
+          </Link>
+        )}
       </Menu.Menu>
     </Menu>
   );
