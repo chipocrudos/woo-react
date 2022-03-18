@@ -1,13 +1,9 @@
 import axios from "axios";
-import {
-  AUTH_API_URL,
-  TOKEN,
-  WORDPRESS_URL,
-  NEXT_PUBLIC_SITE_URL,
-} from "../config/constants";
+import axiosInstance from "../config/axios";
+import { removeToken, setToken } from "./token";
 
 export const loginApi = async ({ email, password }) => {
-  const response = await axios.post(`${NEXT_PUBLIC_SITE_URL}/api/auth`, {
+  const response = await axiosInstance.post("/api/auth", {
     email,
     password,
   });
@@ -15,31 +11,20 @@ export const loginApi = async ({ email, password }) => {
   return response;
 };
 
-export const validateApi = async (token) => {
-  const response = await axios.post(
-    `${NEXT_PUBLIC_SITE_URL}/api/auth/validate`,
-    {},
-    {
-      headers: {
-        Authorization: `${TOKEN} ${token}`,
-      },
-    }
-  );
-
-  // return response;
+export const validateTokenApi = async () => {
+  const response = await axios.post("/api/auth/validate");
   return response.status === 200;
 };
 
-export const meApi = async (token) => {
-  const response = await axios.get(
-    `${NEXT_PUBLIC_SITE_URL}/api/auth/me`,
+export const refreshTokenApi = async () => {
+  const { data } = await axiosInstance.post("/api/auth/refresh");
 
-    {
-      headers: {
-        Authorization: `${TOKEN} ${token}`,
-      },
-    }
-  );
+  if (data.success) setToken(data.data.jwt);
+  else removeToken();
+};
+
+export const meApi = async () => {
+  const response = await axiosInstance.get("/api/auth/me");
 
   return response;
 };

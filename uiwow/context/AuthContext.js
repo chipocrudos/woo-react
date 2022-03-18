@@ -19,8 +19,14 @@ export function AuthProvider(props) {
     (async () => {
       const token = getToken();
       if (token) {
-        const { data: me } = await meApi(token);
-        setAuth({ token, me });
+        try {
+          const { data: me } = await meApi(token);
+          setAuth({ token, me });
+        } catch (error) {
+          // removeToken();
+          setAuth(null);
+          setCustomer(null);
+        }
       } else {
         setAuth(null);
       }

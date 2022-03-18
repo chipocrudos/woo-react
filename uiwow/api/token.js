@@ -3,7 +3,7 @@ export function setToken(token) {
 }
 
 export function getToken() {
-  return localStorage.getItem("key");
+  if (process.browser) return localStorage.getItem("key");
 }
 
 export function removeToken() {

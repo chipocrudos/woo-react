@@ -14,6 +14,7 @@ export default function FormSearch() {
     if (formData.search) {
       const query = router.query;
       delete query?.page;
+      delete query?.slug;
 
       router.push({
         pathname: "/",
