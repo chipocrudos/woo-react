@@ -1,18 +1,18 @@
 import { useRouter } from "next/router";
-import { Footer, Header, UserLayout } from "../layouts";
-import { getHeaderFooter } from "../api/site";
-import { useAuth } from "../hooks";
+import { Footer, Header, UserLayout } from "../../layouts";
+import { getHeaderFooter } from "../../api/site";
+import { useAuth } from "../../hooks";
 import { Grid, GridColumn } from "semantic-ui-react";
-import { LoginForm } from "../components";
+import { RegisterForm } from "../../components";
 
-export default function Login(props) {
+export default function Account(props) {
   const { headerFooter } = props;
   const { auth } = useAuth();
   const router = useRouter();
 
-  if (auth?.me)
+  if (!auth?.me)
     router.push({
-      pathname: "/",
+      pathname: "/login",
     });
 
   return (
@@ -21,8 +21,8 @@ export default function Login(props) {
       <UserLayout>
         <Grid>
           <Grid.Row centered>
-            <GridColumn textAlign="center" width={6}>
-              <LoginForm />
+            <GridColumn textAlign="center" width={4}>
+              <RegisterForm />
             </GridColumn>
           </Grid.Row>
         </Grid>

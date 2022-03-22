@@ -3,42 +3,26 @@ import Link from "next/link";
 import { Button, Form, Header, Icon, Segment } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useAuth } from "../../../hooks";
-import { loginApi } from "../../../api/auth";
-import style from "./LoginForm.module.css";
+import { resetPasswordApi } from "../../../api/auth";
+import style from "./ResetPasswordForm.module.css";
 
-export function LoginForm() {
-  const { login, get } = useAuth();
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  const onMessage = (message) => {
-    setErrorMessage(message);
-
-    setTimeout(() => {
-      setErrorMessage(null);
-    }, 5000);
-  };
+export function ResetPasswordForm(props) {
+  const { onResetPassword } = props;
 
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
-      const response = await loginApi(formValue);
-      const { data } = response;
-
-      if (data.success) {
-        login(data.data);
-      } else {
-        onMessage(data.data.message);
-      }
+      resetPasswordApi(formValue);
+      onResetPassword();
     },
   });
 
   return (
     <div className={style.loginFormContent}>
       <Form onSubmit={formik.handleSubmit} className={style.loginForm}>
-        <Header>Formulario de Ingreso</Header>
+        <Header>Recueperar contraseña</Header>
 
         <Form.Input
           name="email"
@@ -50,24 +34,8 @@ export function LoginForm() {
           autofocus
         />
 
-        <Form.Input
-          name="password"
-          type="password"
-          placeholder="Contraseña"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          error={formik.errors.password}
-        />
-
-        <Button type="submit" content="Iniciar sesión" fluid primary />
+        <Button type="submit" content="Enviar correo" fluid secondary />
       </Form>
-
-      {errorMessage && (
-        <Segment color="red">
-          <Icon name="exclamation" />
-          {errorMessage}
-        </Segment>
-      )}
 
       <Segment color="orange" className={style.loginFormMessage}>
         <div>
@@ -78,10 +46,10 @@ export function LoginForm() {
           </Link>
         </div>
         <div>
-          ¿Se te olvido la contraseña?
+          ¿Ya tienes cuenta?
           <br />
-          <Link href="/resetpassword">
-            <a>Recuerarla aquí</a>
+          <Link href="/login">
+            <a>Ingresa aquí</a>
           </Link>
         </div>
       </Segment>
@@ -92,13 +60,11 @@ export function LoginForm() {
 function initialValues() {
   return {
     email: "",
-    password: "",
   };
 }
 
 function validationSchema() {
   return {
     email: Yup.string().email().required(true),
-    password: Yup.string().required(true),
   };
 }

@@ -28,3 +28,46 @@ export const meApi = async () => {
 
   return response;
 };
+
+export const resetPasswordApi = async (formData) => {
+  const { email } = formData;
+  try {
+    const response = await axios.post("/api/auth/resetpassword", {
+      email,
+    });
+
+    return {
+      data: response.data,
+      success: response.success,
+    };
+  } catch (error) {
+    return {
+      data: error.response.data,
+      success: error.response.success,
+    };
+  }
+};
+
+export const createCustomerApi = async (formData) => {
+  const { first_name, last_name, email, password } = formData;
+  try {
+    const response = await axiosInstance.post("/api/auth/signup", {
+      first_name,
+      last_name,
+      email,
+      password,
+    });
+
+    return {
+      data: response.data,
+      status: response.status,
+      statusText: response.statuxText,
+    };
+  } catch (error) {
+    return {
+      data: error.response.data,
+      status: error.response.status,
+      statusText: error.response.statuxText,
+    };
+  }
+};

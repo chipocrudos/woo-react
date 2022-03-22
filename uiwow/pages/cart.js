@@ -17,9 +17,10 @@ export default function Home(props) {
       <UserLayout>
         {!!!cart ? (
           <CenterMessage
-            color="yellow"
+            messageType="warning"
             header="Carrito de compras vacio"
             content="Busca entre nuestros productos"
+            columns="2"
           />
         ) : (
           <Container

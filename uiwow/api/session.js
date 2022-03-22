@@ -11,3 +11,7 @@ export const storeSession = (session) => {
 export const getSession = () => {
   return localStorage.getItem("x-wc-session") || false;
 };
+
+export const revokeSession = () => {
+  localStorage.removeItem("x-wc-session");
+};

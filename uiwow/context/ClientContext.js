@@ -18,6 +18,8 @@ export function ClientProvider(props) {
       if (!cart?.length) {
         viewCartApi(setCart);
       }
+
+      viewCartApi(setCart);
     }
   }, []);
 

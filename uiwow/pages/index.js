@@ -26,6 +26,7 @@ export default function Home(props) {
             color="orange"
             header="Resultados"
             content="No se encontraron resultados"
+            columns="3"
           />
         ) : (
           <>

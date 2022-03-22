@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CART_API_URL } from "../config/constants";
-import { getSession, storeSession } from "./session";
+import { getSession, revokeSession, storeSession } from "./session";
 import { sumBy } from "lodash";
 
 export const getAddOrViewCartConfig = () => {
@@ -67,10 +67,13 @@ export const viewCartApi = async (setCart) => {
   const response = await axios.get(CART_API_URL, getAddOrViewCartConfig());
   const formattedCartData = getFormattedCartData(response?.data ?? []);
   setCart(formattedCartData);
+  // if (formattedCartData)
+  // else revokeSession();
 };
 
 const getFormattedCartData = (cartData) => {
   if (!cartData.length) {
+    revokeSession();
     return null;
   }
   const cartTotal = {
