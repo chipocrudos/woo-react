@@ -100,6 +100,7 @@ RewriteEngine On
 * Headless CMS
 * Perfect-woocommerce-brands
 * Simple JWT Login
+* Post SMTP
 
 
 ###### Configuración mínima Simple JWT Login 
@@ -160,3 +161,4 @@ yarn dev
 * [Headless cms](https://es-mx.wordpress.org/plugins/headless-cms/)
 * [Perfect woocommerce brands api](https://github.com/quadlayers/perfect-woocommerce-brands/wiki/REST-API-docs)
 * [Plugin enable JWT  protect endpoind](https://docs.simplejwtlogin.com/)
+* [Plugin Post SMTP](https://es-mx.wordpress.org/plugins/post-smtp/)
