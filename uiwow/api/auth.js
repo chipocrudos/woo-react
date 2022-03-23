@@ -48,6 +48,25 @@ export const resetPasswordApi = async (formData) => {
   }
 };
 
+export const changePasswordApi = async (formData) => {
+  const { email, code, new_password } = formData;
+  try {
+    const response = await axios.post("/api/auth/changepassword", {
+      email,
+      code,
+      new_password,
+    });
+
+    return {
+      data: response.data.data,
+    };
+  } catch (error) {
+    return {
+      data: error.response.data.data,
+    };
+  }
+};
+
 export const createCustomerApi = async (formData) => {
   const { first_name, last_name, email, password } = formData;
   try {

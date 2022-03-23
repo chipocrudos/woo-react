@@ -73,14 +73,14 @@ export function LoginForm() {
         <div>
           ¿No cuentas con un usuario?
           <br />
-          <Link href="/signup">
+          <Link href="/auth/signup">
             <a>Registrate aquí</a>
           </Link>
         </div>
         <div>
           ¿Se te olvido la contraseña?
           <br />
-          <Link href="/resetpassword">
+          <Link href="/auth/resetpassword">
             <a>Recuerarla aquí</a>
           </Link>
         </div>

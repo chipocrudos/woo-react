@@ -110,6 +110,25 @@ RewriteEngine On
 Dashboard ![Darsboard](/img/dashboard.png)
 General ![General](/img/general.png)
 Login ![Login](/img/login.png)
+
+Ejemplo deconfiguración de plantilla de correo para la recuperación de contraseña
+```html
+Se ha solicitado el reinicio de contraseña del nuestra tienda . <br/>
+{{NAME}} <br/>
+<p>
+Reinicio de contraseña en el siguiente enlace.
+</p>
+<p>
+<a href=\"http://localhost:3000/auth/changepassword?code={{CODE}}&email={{EMAIL}}\" > 
+http://localhost:3000/auth/changepassword?code={{CODE}}&email={{EMAIL}}
+ </a>
+</p>
+<p>
+Nombre de la tienda
+</p>
+
+```
+
 Reset Password ![Reset password](/img/reset-password.png)
 Authentication ![Authentication](/img/authentication.png)
 Auth Codes ![Auth Codes](/img/auth-codes.png)

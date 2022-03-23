@@ -23,7 +23,7 @@ export default function Home(props) {
       <UserLayout>
         {xTotal === "0" ? (
           <CenterMessage
-            color="orange"
+            messagetype="warning"
             header="Resultados"
             content="No se encontraron resultados"
             columns="3"

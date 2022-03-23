@@ -26,9 +26,11 @@ axiosInstance.interceptors.response.use(
         error.response.data.data.errorCode === 14
       ) {
         originalConfig._retry = true;
+        const token = getToken();
+
         await refreshTokenApi();
-        originalConfig.headers.Authorization = getToken()
-          ? `${TOKEN} ${getToken()}`
+        originalConfig.headers.Authorization = token
+          ? `${TOKEN} ${token}`
           : null;
         return axiosInstance(originalConfig);
       }

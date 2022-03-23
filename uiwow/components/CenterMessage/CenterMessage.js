@@ -1,7 +1,7 @@
 import { Grid, Message } from "semantic-ui-react";
 
 export function CenterMessage(props) {
-  const { header, content, color, icon, columns, messageType } = props;
+  const { header, content, color, icon, columns, messagetype } = props;
 
   return (
     <Grid>
@@ -12,7 +12,7 @@ export function CenterMessage(props) {
             icon={icon}
             header={header}
             content={content}
-            className={messageType}
+            className={messagetype}
           />
         </Grid.Column>
       </Grid.Row>
@@ -22,7 +22,7 @@ export function CenterMessage(props) {
 
 Message.defaultProps = {
   color: "",
-  messageType: "",
+  messagetype: "",
   header: "",
   icon: "x",
   columns: 2,

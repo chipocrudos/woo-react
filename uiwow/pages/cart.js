@@ -17,7 +17,7 @@ export default function Home(props) {
       <UserLayout>
         {!!!cart ? (
           <CenterMessage
-            messageType="warning"
+            messagetype="warning"
             header="Carrito de compras vacio"
             content="Busca entre nuestros productos"
             columns="2"

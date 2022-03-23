@@ -41,14 +41,14 @@ export function ResetPasswordForm(props) {
         <div>
           ¿No cuentas con un usuario?
           <br />
-          <Link href="/signup">
+          <Link href="/auth/signup">
             <a>Registrate aquí</a>
           </Link>
         </div>
         <div>
           ¿Ya tienes cuenta?
           <br />
-          <Link href="/login">
+          <Link href="/auth/login">
             <a>Ingresa aquí</a>
           </Link>
         </div>

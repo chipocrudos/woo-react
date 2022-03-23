@@ -68,7 +68,7 @@ export function TopMenu(props) {
             Salir
           </Menu.Item>
         ) : (
-          <Link href="/login">
+          <Link href="/auth/login">
             <Menu.Item>
               <Icon name="sign in" />
               Ingresar

@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import { Footer, Header, UserLayout } from "../layouts";
-import { getHeaderFooter } from "../api/site";
-import { useAuth } from "../hooks";
+import { Footer, Header, UserLayout } from "../../layouts";
+import { getHeaderFooter } from "../../api/site";
+import { useAuth } from "../../hooks";
 import { Grid, GridColumn } from "semantic-ui-react";
-import { LoginForm } from "../components";
+import { LoginForm } from "../../components";
 
 export default function Login(props) {
   const { headerFooter } = props;

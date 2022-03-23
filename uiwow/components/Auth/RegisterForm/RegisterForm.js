@@ -109,7 +109,7 @@ export function RegisterForm(props) {
         <div>
           ¿Ya tienes cuenta?
           <br />
-          <Link href="/login">
+          <Link href="/auth/login">
             <a>Ingresa aquí</a>
           </Link>
         </div>
@@ -117,7 +117,7 @@ export function RegisterForm(props) {
         <div>
           ¿Se te olvido la contraseña?
           <br />
-          <Link href="/resetpassword">
+          <Link href="/auth/resetpassword">
             <a>Recuerarla aquí</a>
           </Link>
         </div>

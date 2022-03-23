@@ -1,27 +1,27 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Footer, Header, UserLayout } from "../layouts";
-import { getHeaderFooter } from "../api/site";
-import { useAuth } from "../hooks";
+import { Footer, Header, UserLayout } from "../../layouts";
+import { getHeaderFooter } from "../../api/site";
+import { useAuth } from "../../hooks";
 import { Grid, GridColumn } from "semantic-ui-react";
-import { CenterMessage, RegisterForm } from "../components";
+import { CenterMessage, ResetPasswordForm } from "../../components";
 
-export default function Signup(props) {
+export default function Login(props) {
   const { headerFooter } = props;
   const { auth } = useAuth();
   const router = useRouter();
-  const [create, setCreate] = useState(false);
+  const [resetPassword, setResetPassword] = useState(false);
 
   if (auth?.me)
     router.push({
       pathname: "/",
     });
 
-  const onUserCreate = () => {
-    setCreate(true);
+  const onResetPassword = () => {
+    setResetPassword(true);
     setTimeout(() => {
       router.push({
-        pathname: "/login",
+        pathname: "/",
       });
     }, 3000);
   };
@@ -32,17 +32,17 @@ export default function Signup(props) {
       <UserLayout>
         <Grid>
           <Grid.Row centered>
-            <GridColumn textAlign="center" width={8}>
-              {create ? (
+            <GridColumn textAlign="center" width={6}>
+              {resetPassword ? (
                 <CenterMessage
-                  messageType="positive"
-                  header="Usuario creado"
-                  icon="check"
+                  messagetype="positive"
+                  header="Correo enviado"
+                  icon="exclamation"
                   columns="1"
-                  content="Su usuario se ha creado correctamente, ya puede ingresar con su cuenta."
+                  content="Se le ha enviado un correo electrónico para realizar el cambio."
                 />
               ) : (
-                <RegisterForm onUserCreate={onUserCreate} />
+                <ResetPasswordForm onResetPassword={onResetPassword} />
               )}
             </GridColumn>
           </Grid.Row>

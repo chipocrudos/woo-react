@@ -1,27 +1,27 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Footer, Header, UserLayout } from "../layouts";
-import { getHeaderFooter } from "../api/site";
-import { useAuth } from "../hooks";
+import { Footer, Header, UserLayout } from "../../layouts";
+import { getHeaderFooter } from "../../api/site";
+import { useAuth } from "../../hooks";
 import { Grid, GridColumn } from "semantic-ui-react";
-import { CenterMessage, ResetPasswordForm } from "../components";
+import { CenterMessage, ChangePasswordForm } from "../../components";
 
-export default function Login(props) {
+export default function ChangePassword(props) {
   const { headerFooter } = props;
   const { auth } = useAuth();
   const router = useRouter();
-  const [resetPassword, setResetPassword] = useState(false);
+  const [change, setChange] = useState(false);
 
   if (auth?.me)
     router.push({
       pathname: "/",
     });
 
-  const onResetPassword = () => {
-    setResetPassword(true);
+  const onChangePassword = () => {
+    setChange(true);
     setTimeout(() => {
       router.push({
-        pathname: "/",
+        pathname: "/auth/login",
       });
     }, 3000);
   };
@@ -32,17 +32,17 @@ export default function Login(props) {
       <UserLayout>
         <Grid>
           <Grid.Row centered>
-            <GridColumn textAlign="center" width={6}>
-              {resetPassword ? (
+            <GridColumn textAlign="center" width={8}>
+              {change ? (
                 <CenterMessage
                   messageType="positive"
-                  header="Correo enviado"
-                  icon="exclamation"
+                  header="Cambio de contraseña"
+                  icon="check"
                   columns="1"
-                  content="Se le ha enviado un correo electrónico para realizar el cambio."
+                  content="Contraseña actualizada correctamente, ya puede ingresar con su cuenta."
                 />
               ) : (
-                <ResetPasswordForm onResetPassword={onResetPassword} />
+                <ChangePasswordForm onChangePassword={onChangePassword} />
               )}
             </GridColumn>
           </Grid.Row>
